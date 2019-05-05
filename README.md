@@ -16,9 +16,13 @@
 - Change `DB_HOST=mysql`
 
 ### Errors
+
 #### MySQL Errors
+
 **The server requested authentication method unknown to the client**
+
 This error occured with latest version of MySQL. You can quick fixed it by following this step:
+
 - Login to Mysql as root
 - Run this command: `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 
