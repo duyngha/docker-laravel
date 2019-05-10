@@ -1,4 +1,10 @@
 ## Docker for Laravel
+A docker compose for Laravel development.
+
+### Prerequisites
+
+**Laravel Installer**
+See the [documentation](https://laravel.com/docs/5.8/installation).
 
 ### Installation
 
@@ -6,13 +12,13 @@
 
 `git clone git@bitbucket.org:duyngha/dn-laravel-docker.git my-laravel`
 
-**Create `my-laravel/app` folder and pull Laravel source into `app` folder.**
+**Put the Laravel source into app foler**
 
-**Config MYSQL port, app port in `docker-compose.yml` file.**
+`cd my-laravel && laravel new app --force`
 
-**Config laravel in `.env`**
+**Config Laravel in `.env` file**
 
-- Change `APP_URL` value to `127.0.0.1`. It should look like `APP_URL=http://127.0.0.1:8088`
+- Change `APP_URL` to `localhost:<nginx-port>`. For example: `localhost:8080`. In case, you use the custom domain, update it.
 - Change `DB_HOST=mysql`
 
 ### Errors
@@ -21,9 +27,9 @@
 
 **The server requested authentication method unknown to the client**
 
-This error occured with latest version of MySQL. You can quick fixed it by following this step:
+This error occures with latest version of MySQL. You can quickly fix it by following this step:
 
-- Login to Mysql as root
+- Login to MySQL as root
 - Run this command: `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 
 Note: Change "password" and "root" with your credentials.
