@@ -1,6 +1,21 @@
-!app/.gitkeep
-data/
-!data/.gitkeep
+/app/*
+!/app/.gitkeep
+/data/*
+!/data/.gitkeep
+
+# Version Control
+.svn
 
 # OSX
 .DS_Store
+Thumbs.db
+
+# IDEs
+.buildpath
+.project
+.settings/
+.build/
+.idea/
+nbproject/
+/tags
+.netbeans.xml
