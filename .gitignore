@@ -1,4 +1,5 @@
 app/
+!app/.gitkeep
 data/
 !data/.gitkeep
 
