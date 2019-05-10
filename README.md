@@ -4,6 +4,7 @@ A docker compose for Laravel development.
 ### Prerequisites
 
 **Laravel Installer**
+
 See the [documentation](https://laravel.com/docs/5.8/installation).
 
 ### Installation
