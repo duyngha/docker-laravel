@@ -39,9 +39,10 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - ./data:/var/lib/mysql
+      - ./config/mysql/my.cnf:/etc/mysql/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_USER=admin
@@ -51,5 +52,3 @@ services:
       - SERVICE_NAME=mysql
     networks:
       - laravel
-
-    
