@@ -22,6 +22,12 @@ See the [documentation](https://laravel.com/docs/5.8/installation).
 - Change `APP_URL` to `localhost:<nginx-port>`. For example: `localhost:8080`. In case, you use the custom domain, update it.
 - Change `DB_HOST=mysql`
 
+### Do bash command
+
+To do the bash command in Docker container, you can use the `exec` command in Docker.
+
+`docker-compose exec php php /var/www/html/artisan route:list`
+
 ### Errors
 
 #### MySQL Errors
@@ -34,3 +40,51 @@ This error occures with latest version of MySQL. You can quickly fix it by follo
 - Run this command: `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 
 Note: Change "password" and "root" with your credentials.
+
+## Extra services
+
+### Selenium
+
+This service does stuffs for Laravel Dusk. Follow the [documentation](https://laravel.com/docs/5.6/dusk#installation) to install Laravel Dusk.
+
+**Next, add the service for Selenium**
+
+```
+  selenium:
+    image: selenium/standalone-chrome:3.11.0-antimony
+    container_name: selenium
+    depends_on:
+      - nginx
+      - php
+    links:
+      - nginx:localhost.dev
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - laravel
+```
+
+**Then, change the URL Driver**
+
+File: `DuskTestCase.php`
+```
+        if (env('DOCKER_SELENIUM') == 'true') {
+			return RemoteWebDriver::create(
+            	'http://selenium:4444/wd/hub', DesiredCapabilities::chrome()
+        	);
+        } else {
+	        return RemoteWebDriver::create(
+	            'http://localhost:9515', DesiredCapabilities::chrome()->setCapability(
+	                ChromeOptions::CAPABILITY, $options
+	            )
+	        );
+        }
+```
+
+Add `DOCKER_SELENIUM` environment to `.env` file. You can name it whatever you want.
+
+**Finally, rebuild the Docker container and run example test**
+
+`docker-compose build && docker-compose up -d`
+
+`php artisan dusk`
