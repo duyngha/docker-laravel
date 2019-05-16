@@ -2,6 +2,8 @@ FROM php:7.2-fpm-alpine
 
 RUN apk add --no-cache libzip-dev && docker-php-ext-configure zip --with-libzip=/usr/include && docker-php-ext-install zip
 
+RUN apk add --no-cache git
+
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
