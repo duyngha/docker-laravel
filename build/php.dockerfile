@@ -4,6 +4,8 @@ RUN apk add --no-cache libzip-dev && docker-php-ext-configure zip --with-libzip=
 
 RUN apk add --no-cache git
 
+RUN apk add --no-cache git libpng libpng-dev && docker-php-ext-install gd
+
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
