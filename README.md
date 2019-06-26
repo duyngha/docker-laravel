@@ -26,7 +26,7 @@ See the [documentation](https://laravel.com/docs/5.8/installation).
 
 To do the bash command in Docker container, you can use the `exec` command in Docker.
 
-`docker-compose exec php php /var/www/html/artisan route:list`
+`docker-compose exec php php artisan route:list`
 
 ### Errors
 
@@ -40,6 +40,21 @@ This error occures with latest version of MySQL. You can quickly fix it by follo
 - Run this command: `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 
 Note: Change "password" and "root" with your credentials.
+
+#### Installing Carbon package issue
+
+Update the `composer.json` file:
+
+```
+    "require": {
+        "php": "^7.1.3",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "5.8.*",
+        "laravel/tinker": "^1.0",
+        "nesbot/carbon": "2.18.0 as 1.34.0"
+    },
+```
+
 
 ## Extra services
 
