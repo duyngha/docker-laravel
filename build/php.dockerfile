@@ -2,7 +2,9 @@ FROM php:7.2-fpm-alpine
 
 RUN apk add --no-cache libzip-dev && docker-php-ext-configure zip --with-libzip=/usr/include && docker-php-ext-install zip
 
-RUN apk add --no-cache git
+RUN apk add freetype-dev libjpeg-turbo-dev
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 
 RUN apk add --no-cache git libpng libpng-dev && docker-php-ext-install gd
 
