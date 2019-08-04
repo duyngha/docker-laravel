@@ -28,6 +28,7 @@ services:
     container_name: php
     volumes:
       - ./app:/var/www/html
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
     ports:
       - "9000:9000"
     networks:
@@ -47,7 +48,5 @@ services:
       - MYSQL_USER=admin
       - MYSQL_DATABASE=laravel
       - MYSQL_PASSWORD=secret
-      - SERVICE_TAGS=dev
-      - SERVICE_NAME=mysql
     networks:
       - laravel
