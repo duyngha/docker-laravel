@@ -1,14 +1,7 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.4-fpm-alpine
 
-RUN apk add --no-cache libzip-dev && docker-php-ext-configure zip --with-libzip=/usr/include && docker-php-ext-install zip
-
-RUN apk add freetype-dev libjpeg-turbo-dev
-
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-
-RUN apk add --no-cache git libpng libpng-dev && docker-php-ext-install gd
-
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apk add libzip-dev freetype-dev libjpeg-turbo-dev git libpng libpng-dev \
+  && docker-php-ext-install zip gd pdo pdo_mysql
 
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 	&& curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
