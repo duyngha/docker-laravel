@@ -2,6 +2,8 @@
 !/app/.gitkeep
 /data/*
 !/data/.gitkeep
+/log/*
+!/log/.gitkeep
 
 # Version Control
 .svn
