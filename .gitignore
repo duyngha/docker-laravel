@@ -4,6 +4,10 @@
 !/data/.gitkeep
 /log/*
 !/log/.gitkeep
+/redis/*
+!/redis/.gitkeep
+/config/redis/*
+!/config/redis/.gitkeep
 
 # Version Control
 .svn
