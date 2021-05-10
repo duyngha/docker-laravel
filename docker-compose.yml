@@ -37,6 +37,8 @@ services:
     volumes:
       - ./data:/var/lib/mysql
       - ./config/mysql/my.cnf:/etc/mysql/my.cnf
+    ports: 
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_USER=admin
@@ -44,3 +46,22 @@ services:
       - MYSQL_PASSWORD=secret
     networks:
       - laravel
+
+  myadmin:
+    image: phpmyadmin
+    ports: 
+      - "33060:80"
+    environment: 
+      - PMA_HOST=mysql
+    depends_on: 
+      - mysql
+    networks: 
+      - laravel
+
+  redis:
+    image: redis:6.2.3
+    ports:
+      - "6379:6379"
+    volumes: 
+      - $PWD/redis:/var/lib/redis
+      - $PWD/config/redis/redis.conf:/usr/local/etc/redis/redis.conf
