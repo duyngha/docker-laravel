@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# This script will generate env file for docker and install laravel source
+# 
+# @version 1.0
+# @author Duy Nguyen <duyngha@gmail.com>
+
+ENV=.env
+
+if [ ! -f "$ENV" ]; then
+	echo "Generating env file for docker..."
+	cp .env.example .env
+fi
+
+APP_DIR=app
+if [ ! -d "$APP_DIR" ]; then
+	echo "Clear the app folder..."
+	sudo rm -rf app/*
+fi
+
+if type laravel &> /dev/null; then
+	echo "Installing laravel..."
+	laravel new app --force
+else
+	echo 'Please install laravel installer and run the script again.'
+fi

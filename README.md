@@ -13,14 +13,19 @@ See the [documentation](https://laravel.com/docs/5.8/installation).
 
 `git clone git@bitbucket.org:duyngha/dn-laravel-docker.git my-laravel`
 
-**Put the Laravel source into app foler**
+**With new project source**
 
-`cd my-laravel && laravel new app --force`
+Run the file `bootstrap` by following command `./bootstrap`
 
-**Config Laravel in `.env` file**
+**With exists project**
 
-- Change `APP_URL` to `localhost:<nginx-port>`. For example: `localhost:8080`. In case, you use the custom domain, update it.
-- Change `DB_HOST=mysql`
+- Copy file `.env.example` to `.env` and config the environment
+- Put the Laravel source into `app` foler
+
+**Build docker**
+
+Run the following command to build the docker container
+`docker-compose up --build`
 
 ### Do bash command
 

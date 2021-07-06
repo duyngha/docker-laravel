@@ -1,4 +1,6 @@
-FROM php:8.0.6-fpm-alpine
+ARG PHP_VER
+
+FROM php:${PHP_VER}-fpm-alpine
 
 RUN apk add libzip-dev freetype-dev libjpeg-turbo-dev git libpng libpng-dev \
   && docker-php-ext-install zip gd pdo pdo_mysql
