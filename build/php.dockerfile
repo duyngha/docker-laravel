@@ -1,17 +1,15 @@
 ARG PHP_VER
 
-FROM php:${PHP_VER}-fpm-alpine
+FROM php:${PHP_VER}-fpm
 
-RUN apk add libzip-dev freetype-dev libjpeg-turbo-dev git libpng libpng-dev \
-  && docker-php-ext-install zip gd pdo pdo_mysql
+RUN apt-get update 2>/dev/null
 
-RUN apk --update --no-cache add autoconf g++ make && \
-	pecl install -f xdebug && \
-	docker-php-ext-enable xdebug
+RUN apt-get install -y libzip-dev libfreetype6-dev git libpng-dev autoconf g++ make \
+	&& docker-php-ext-install zip gd pdo pdo_mysql
 
 RUN pecl install mongodb && docker-php-ext-enable mongodb
 
-RUN apk del --purge autoconf g++ make
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 	&& curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \

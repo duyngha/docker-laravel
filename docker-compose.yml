@@ -57,27 +57,27 @@ services:
     networks: 
       - laravel
 
-  redis:
-    image: redis:$REDIS_VER
-    ports:
-      - $REDIS_PORT:6379
-    volumes: 
-      - $PWD/data/redis:/var/lib/redis
-      - $PWD/config/redis/redis.conf:/usr/local/etc/redis/redis.conf
+  # redis:
+  #   image: redis:$REDIS_VER
+  #   ports:
+  #     - $REDIS_PORT:6379
+  #   volumes: 
+  #     - $PWD/data/redis:/var/lib/redis
+  #     - $PWD/config/redis/redis.conf:/usr/local/etc/redis/redis.conf
 
-  es:
-    image: docker.elastic.co/elasticsearch/elasticsearch:$ES_IMG_VER
-    environment:
-      - discovery.type=single-node
+  # es:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:$ES_IMG_VER
+  #   environment:
+  #     - discovery.type=single-node
 
-    # @todo this is not working at this time.
-    # volumes:
-      # - $PWD/data/es/node:/usr/share/elasticsearch/data
-      # - ./log/es:/usr/share/elasticsearch/logs
-    ports:
-      - $ES_PORT:9200
-    networks:
-      - laravel
+  #   # @todo this is not working at this time.
+  #   # volumes:
+  #     # - $PWD/data/es/node:/usr/share/elasticsearch/data
+  #     # - ./log/es:/usr/share/elasticsearch/logs
+  #   ports:
+  #     - $ES_PORT:9200
+  #   networks:
+  #     - laravel
 
 networks:
   laravel:
