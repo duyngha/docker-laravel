@@ -9,6 +9,8 @@ RUN apt-get install -y libzip-dev libfreetype6-dev git libpng-dev autoconf g++ m
 
 RUN pecl install mongodb && docker-php-ext-enable mongodb
 
+RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
+
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
