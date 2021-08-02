@@ -31,7 +31,7 @@ services:
       - laravel
 
   mysql:
-    image: mysql:latest
+    image: mysql:$MYSQL_VER
     tty: true
     volumes:
       - ./data/mysql:/var/lib/mysql
@@ -81,4 +81,3 @@ services:
 
 networks:
   laravel:
-    driver: bridge
