@@ -47,6 +47,8 @@ services:
     networks:
       - laravel
 
+  # 172.17.0.1 #external port of Docker
+  # using this IP when you config MongoDB in Laravel .env file for MongoDB host
   mongodb:
     image: mongo
     volumes:
