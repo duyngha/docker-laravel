@@ -4,7 +4,7 @@ FROM php:${PHP_VER}-fpm
 
 RUN apt-get update 2>/dev/null
 
-RUN apt-get install -y libzip-dev libfreetype6-dev git libpng-dev autoconf g++ make \
+RUN apt-get install -y libzip-dev libfreetype6-dev git libpng-dev autoconf g++ make libssl-dev \
 	&& docker-php-ext-install zip gd pdo pdo_mysql
 
 RUN pecl install mongodb && docker-php-ext-enable mongodb
