@@ -12,6 +12,12 @@ if [ ! -f "$ENV" ]; then
 	cp .env.example .env
 fi
 
+DOCKER_COMPOSE_FILE=docker-compose.example
+if [ ! -f "$DOCKER_COMPOSE_FILE" ]; then
+	echo "Generating docker-compose.yml file for docker..."
+	cp docker-compose.example docker-compose.yml
+fi
+
 APP_DIR=app
 if [ ! -d "$APP_DIR" ]; then
 	echo "Clear the app folder..."

@@ -8,6 +8,7 @@
 !/redis/.gitkeep
 /config/redis/*
 !/config/redis/.gitkeep
+docker-compose.yml
 
 # Version Control
 .svn

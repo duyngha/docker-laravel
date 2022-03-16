@@ -29,6 +29,12 @@ Run the following command to build the docker container
 
 ### Do bash command
 
-To do the bash command in Docker container, you can use the `exec` command in Docker.
+- To do the bash command in Docker container, you can use the `exec` command in Docker.
 
 `docker-compose exec php php artisan route:list`
+
+- Or, you can create an alias in bash profile file to quickly call docker exec command
+
+`alias dbash="docker-compose exec php /bin/bash"`
+
+Now, you can type `dbash` in terminal to access the internal docker container.
