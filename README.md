@@ -11,7 +11,7 @@ See the [documentation](https://laravel.com/docs/5.8/installation).
 
 **Clone the repository to your local.**
 
-`git clone git@bitbucket.org:duyngha/dn-laravel-docker.git my-laravel`
+`git clone git@github.com:duyngha/docker-laravel.git`
 
 **With new project source**
 
@@ -38,3 +38,6 @@ Run the following command to build the docker container
 `alias dbash="docker-compose exec php /bin/bash"`
 
 Now, you can type `dbash` in terminal to access the internal docker container.
+
+### Changelog
+[Changelog](CHANGELOG.md)
