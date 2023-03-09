@@ -39,5 +39,12 @@ Run the following command to build the docker container
 
 Now, you can type `dbash` in terminal to access the internal docker container.
 
+### Elasticsearch and Kibana configuration
+Add these lines to your `.env` file
+```
+ELASTIC_HOST=elasticsearch:9200 // ES url
+ELASTIC_LOGS_INDEX=user_logs // Kibana log index
+```
+
 ### Changelog
 [Changelog](CHANGELOG.md)
