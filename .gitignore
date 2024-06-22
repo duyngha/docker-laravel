@@ -4,10 +4,6 @@
 !/data/.gitkeep
 /log/*
 !/log/.gitkeep
-/redis/*
-!/redis/.gitkeep
-/config/redis/*
-!/config/redis/.gitkeep
 docker-compose.yml
 
 # Version Control
